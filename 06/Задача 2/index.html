@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Поиск минимального и максимального числа</h1>
+    <p class="all-elements"></p>
+
+    <button class="min", onclick="sayMinNumber()">Найти минимальное число</button>
+    <button class="max", onclick="sayMaxNumber()">Найти максимальное число</button>
+
+    <p>Минимальное число: <span class="minNumber"></span></p>
+    <p>Максимальное число: <span class="maxNumber"></span></p>
+
+    <script>
+        const array = [12, 4, 6, 75, 2];
+        const allEl = document.querySelector('.all-elements');
+        allEl.append(array);
+
+        let minimum = 100000000000;
+        let maximum = -100000000000;
+        
+        const minNumberEl = document.querySelector('.minNumber');
+
+        const maxNumberEl = document.querySelector('.maxNumber');
+
+        for (const element of array) {
+            if (element > maximum) {
+                maximum = element;
+            }
+        }
+
+        flagMax = false;
+        function sayMaxNumber() {
+            if (!flagMax) {
+                maxNumberEl.textContent += maximum;
+                flagMax=true;
+            }
+            
+        }
+        
+
+        for (const element of array) {
+            if (element < minimum) {
+                minimum = element;
+            }
+        }
+
+        flagMin = false;
+        function sayMinNumber() {
+            if (!flagMin) {
+                minNumberEl.textContent += minimum;
+                flagMin=true;
+            }
+        }
+    </script>
+</body>
+</html>

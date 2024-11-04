@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Список товаров</h1>
+    <ul class="products">
+    <!-- Список товаров будет сгенерирован здесь -->
+    </ul>
+    <script>
+        const productsEl = document.querySelector('.products');
+        const products = ["Мышка", "Клавиатура", "Наушники"];
+        const newProducts = ["Монитор", "Принтер", "Флешка",];
+        for (const element of newProducts) {
+            products.push(element);
+        }
+        for (const element of products) {
+            const product = document.createElement('li');
+            product.textContent = element;
+            productsEl.append(product);
+        }
+    </script>
+</body>
+</html>
