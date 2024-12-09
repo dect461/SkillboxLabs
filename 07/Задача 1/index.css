@@ -1,0 +1,48 @@
+* {
+    font-family: sans-serif;
+}
+
+.btn {
+    padding: 15px 20px;
+    border: 0px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: white;
+}
+
+.btn {
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.green {
+    background-color: rgb(42, 156, 38);
+}
+
+.blue {
+    background-color: rgb(62, 62, 230);
+}
+
+.btn_context {
+    display: flex;
+    column-gap: 10px;
+    margin-bottom: 40px;
+}
+
+.bookName {
+    font: 18px;
+    margin-bottom: 10px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+    width: 500px;
+}
+
+.findEl {
+    padding: 5px 0 5px 5px;
+    margin-left: 10px;
+    background-color: yellow;
+    border-radius: 6px;
+}
