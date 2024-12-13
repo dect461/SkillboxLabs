@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <script>
-        function filterAndSortUsers(arr) {
-            return arr.filter(person => person[1] > 25 & person[2])
-                        .sort((a,b) => a[1] - b[1])
-                        .map(user => user[0])
+        const cars = {
+        BMW: {
+            name: 'BMW',
+            wheels: 4,
+            doors: 4,
+            isStarted: false,
+            hp: 300
+        },
+        Audi: {
+            name: 'Audi',
+            wheels: 4,
+            doors: 2,
+            isStarted: false,
+            hp: 500,
+        },
+        Mersedes: {
+            name: 'Mersedes',
+            wheels: 3,
+            doors: 2,
+            isStarted: true,
+            hp: 250,
         }
-
-        const users = [
-            ["Alice", 25, true],
-            ["Bob", 30, false],
-            ["Charlie", 22, true],
-            ["David", 27, true],
-            ["Eve", 20, false]
-        ];
-        const sportUsersOver25 = filterAndSortUsers(users);
-        console.log(sportUsersOver25); // Выведет ["David"]
+    }
+    function getCarsName() {
+        const list = Object.keys(cars)
+        return list.forEach(elem => console.log(elem))
+    }
+    console.log(getCarsName()); 
     </script>
 </body>
 </html>
+
+

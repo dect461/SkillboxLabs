@@ -4,20 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <script>
-        const countVowels = (word) => {
-            const filtList = ['a', 'e', 'i', 'o', 'u'];
-            return word.toLowerCase()
-                        .split('')
-                        .filter(el => filtList.includes(el)).length;
-        };
-
-        const word = 'JavaScript';
-        const vowelCount = countVowels(word);
-        console.log(vowelCount); // Выведет 3
+        const cars = {
+        BMW: {
+            name: 'BMW',
+            wheels: 4,
+            doors: 4,
+            isStarted: false,
+            hp: 300
+        },
+        Audi: {
+            name: 'Audi',
+            wheels: 4,
+            doors: 2,
+            isStarted: false,
+            hp: 500,
+        },
+        Mersedes: {
+            name: 'Mersedes',
+            wheels: 3,
+            doors: 2,
+            isStarted: true,
+            hp: 250,
+        },
+        
+        getCar: function(name) {
+            if (this[name]) {
+                return this[name];
+            }
+            return console.log('авто не найдено');
+        } 
+    }
+    console.log(cars.getCar('Audi')); 
+    console.log(cars.getCar('ddd')); 
+    console.log(cars.getCar(null)); 
     </script>
 </body>
 </html>
+
+
