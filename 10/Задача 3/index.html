@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+    </ul>
+    <button class="sortUpButton">Сортировка по возрастанию</button>
+    <button class="sortDownButton">Сортировка по убыванию</button>
+
+    <script>
+        let count = 0
+        function render(arr) {
+            listEl.innerHTML = "";
+            arr.forEach(element => {
+                newEl = document.createElement('li')
+                newEl.textContent = element
+                listEl.appendChild(newEl)
+            });
+        };
+
+        function sortUp(arr) {
+            return arr.sort((a,b) => a - b)
+        };
+
+        function sortDown(arr) {
+            return arr.sort((a,b) => b - a)
+        };
+
+        const sUpButEl = document.querySelector('.sortUpButton');
+        const sDownButEl = document.querySelector('.sortDownButton');
+        const listEl = document.querySelector('.list');
+        const listNumb = [10, 450, 30, 600, 301, 122, 4, 0]
+
+        render(listNumb)
+        
+        sUpButEl.addEventListener('click', () => {
+            const sortNumb = sortUp(listNumb)
+            render(sortNumb)
+        });
+
+        sDownButEl.addEventListener('click', () => {
+            const sortNumb = sortDown(listNumb)
+            render(sortNumb)
+        });
+    </script>
+</body>
+</html>

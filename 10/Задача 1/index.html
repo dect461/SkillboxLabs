@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .minPic {
+            width: 200px;
+        }
+        
+        .bigPic {
+            height: 1;
+        }
+
+        .bigBox {
+            height: 1200px;
+            background-image: url();
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <img src="1.jpg" alt="Image 1" class="minPic">
+        <img src="2.jpg" alt="Image 2" class="minPic">
+        <img src="3.jpg" alt="Image 3" class="minPic">
+    </div>
+    <div id="bigBox" class="bigBox">    
+        <!-- <img src="" alt="" class="bigPic"> --> 
+    </div>
+
+    <script>
+        const picAll = document.querySelectorAll('.minPic')
+        const fullPic = document.querySelector('.bigPic');
+        const picBox = document.getElementById('bigBox');
+        picBox.style
+        picAll.forEach(pic => {
+            pic.addEventListener('click', () => {
+                picSrc = pic.getAttribute('src') 
+                picBox.style.backgroundImage = `url(${picSrc})`
+                // fullPic.src = picSrc //Второй способ, но с добавлением в блок тега img. Чтобы стало работать, нужно закоментировать строчку 40 и раскоментировать остальные закоментированные строчки
+            })
+            
+        });
+    </script>
+</body>
+</html>
