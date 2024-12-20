@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор стоимости доставки</h1>
+    <form action="#" id="form">
+        <p>
+            Название товара: <input type="text" name="name" id="name" required>
+        </p>
+        <p>
+            Вес товара (кг): <input type="number" name="weight" id="weight" min="0" required>
+        </p>
+        <p>
+            Расстояние доставки (км): <input type="number" name="distance" id="distance" min="0" required>
+        </p>
+        <button type="submit" style="margin-bottom: 16px;">Добавить товар</button>
+    </form>
+
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Вес (кг)</th>
+                <th>Расстояние (км)</th>
+                <th>Стоимость доставки</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Здесь будут добавляться товары -->
+        </tbody>
+    </table>
+
+    <script>
+        const theadEl = document.querySelector('thead');
+
+        const formEl = document.querySelector('#form');
+        const nameEl = document.querySelector('#name');
+        const weightEl = document.querySelector('#weight');
+        const distanceEl = document.querySelector('#distance');
+
+        // nameEl.addEventListener('blur', function(e) {
+        //     if (e.target.value == '' ) {
+        //         nameEl.setCustomValidity(';dsds')
+        //     }
+        // });
+
+        // nameEl.addEventListener('input', function() {
+        //     nameEl.setCustomValidity('')
+        // });
+        
+        formEl.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = nameEl.value
+            nameEl.value = ''
+            const weight = weightEl.value
+            weightEl.value = ''
+            const distance = distanceEl.value
+            distanceEl.value = ''
+            const cost = (weight * distance) / 10
+            const line = document.createElement('tr');
+            const columnName = document.createElement('th');
+            columnName.textContent = name
+            const columnWeight = document.createElement('th');
+            columnWeight.textContent = weight
+            const columnDist = document.createElement('th');
+            columnDist.textContent = distance
+            const columnCost = document.createElement('th');
+            columnCost.textContent = cost
+            
+            line.append(columnName)
+            line.append(columnWeight)
+            line.append(columnDist)
+            line.append(columnCost)
+
+            theadEl.append(line)
+            
+        })
+        
+    </script>
+</body>
+</html>

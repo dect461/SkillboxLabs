@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Форма опроса
+    </h1>
+    <form action="#" class="form">
+        <p>Имя пользователя:
+            <input type="text" name="nickname" class="nickname" required>
+        </p> 
+        <p>Email:
+            <input type="email" name="email" class="email" required>
+        </p> 
+        <p>Пол:
+            <label>
+                <input type="radio" name="radio" class="radio" id="radioM" value="Мужской" required>Мужской
+            </label>
+            <label>
+                <input type="radio" name="radio" class="radio" id="radioW" value="Женский" required>Женский
+            </label>
+        </p>  
+        <p>
+            Оценка сервиса:
+            <input type="range" name="range" class="range" min="1" max="10" step="1">
+        </p>
+        Интересы пользователя:
+        <div>
+            <input class="checkbox" type="checkbox" name="checkSport" id="checkbox1" value="Спорт">
+            Спорт
+        </div>
+        <div>
+            <input class="checkbox" type="checkbox" name="checkMusic" id="checkbox2" value="Музыка"> 
+            Музыка
+        </div>
+        <div>
+            <input class="checkbox" type="checkbox" name="checkAdventure" id="checkbox3" value="Путешествия"> 
+            Путешествия
+        </div>
+        <div style="margin-bottom: 16px;">
+            <input class="checkbox" type="checkbox" name="checkKino" id="checkbox4" value="Кино"> 
+            Кино
+        </div >
+        Дополнительные комментарии:
+        <div style="margin-bottom: 16px;">
+            <textarea style="height: 100px; width: 400px;" name="comment" class="comment"></textarea>
+        </div>
+
+        <button type="submit" class="submit">Отправить</button>
+    </form>
+
+
+
+    <script>
+        function renderInf(arr) {
+            resultEl.innerHTML = "";
+            const h1El = document.createElement('h1');
+            h1El.textContent = 'Результат опроса:';
+            resultEl.append(h1El);
+
+            const paragraphName = document.createElement('p');
+            paragraphName.textContent = 'Имя пользователя: ';
+
+            const paragraphRadio = document.createElement('p');
+            paragraphRadio.textContent = 'Пол: ';
+
+            const paragraphEmail = document.createElement('p');
+            paragraphEmail.textContent = 'Email: ';
+
+            const paragraphRange = document.createElement('p');
+            paragraphRange.textContent = 'Оценка сервиса: ';
+
+            const paragraphComment = document.createElement('p');
+            paragraphComment.textContent = 'Дополнительные комментарии: ';
+
+            const paragraphCheck = document.createElement('p');
+            paragraphCheck.textContent = 'Интересы пользователя: ';
+
+            let text = '';
+            let count = 0;
+            let flag = true;
+
+            arr.forEach(elem => {
+                if (elem.classList.contains('checkbox') && elem.checked) {
+                    if (count > 0) {
+                        text += ', ' + elem.value;
+                    } else {
+                        text += elem.value;
+                    }
+                    count++;
+                }
+            });
+
+            arr.forEach(element => {
+                if (element.classList.contains('nickname')) {
+                    paragraphName.textContent += element.value;
+                    resultEl.append(paragraphName);
+                }
+                if (element.classList.contains('email')) {
+                    paragraphEmail.textContent += element.value;
+                    resultEl.append(paragraphEmail);
+                }
+                if (element.classList.contains('radio') && element.checked) {
+                    paragraphRadio.textContent += element.value;
+                    resultEl.append(paragraphRadio);
+                }
+                if (element.classList.contains('range')) {
+                    paragraphRange.textContent += element.value;
+                    resultEl.append(paragraphRange);
+                }
+                if (count > 0 && flag && element.classList.contains('checkbox')) {
+                    flag = false
+                    paragraphCheck.textContent += text;
+                    resultEl.append(paragraphCheck);
+                }
+
+                if (count === 0)
+                    resultEl.append(paragraphCheck);
+
+                if (element.classList.contains('comment')) {
+                    paragraphComment.textContent += element.value;
+                    resultEl.append(paragraphComment);
+                }
+            });
+
+            document.body.append(resultEl);
+        }
+
+
+        const formEl = document.querySelector('.form');
+        const resultEl = document.createElement('div');
+
+        formEl.addEventListener('submit', function (e) {
+            e.preventDefault();
+            e.stopPropagation()
+            const nicknameEl = document.querySelector('.nickname');
+            const emailEl = document.querySelector('.email');
+            const rangeEl = document.querySelector('.range');
+            const radios = document.querySelectorAll('.radio');
+            const checkboxsEls = document.querySelectorAll('.checkbox');
+            const commentEl = document.querySelector('.comment');
+
+            arr = [nicknameEl, emailEl]
+            radios.forEach((el) => {
+                arr.push(el)
+            })  
+            arr.push(rangeEl)
+            checkboxsEls.forEach((el) => {
+                arr.push(el)
+            })  
+            arr.push(commentEl)
+
+            renderInf(arr);
+        })
+    </script>
+</body>
+</html>
